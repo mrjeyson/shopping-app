@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.utils.addToStdlib.safeAs
-
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -7,6 +5,7 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.parcelize)
     alias(libs.plugins.safeargs)
+    alias(libs.plugins.gmsService)
 }
 
 android {
@@ -57,23 +56,33 @@ dependencies {
     ksp(libs.dagger.hilt.compiler)
     ksp(libs.hilt.compiler)
 
+
+    //Navigation component
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
+
     //loading button
     implementation(libs.loading.button.android)
 
     //Glide
     implementation(libs.glide)
 
-    //Circular image
-    implementation(libs.circeimageview)
+    //circular image
+    implementation(libs.circleimageview)
 
-    //viewpager2 indicator
+    //viewpager2 indicatior
     implementation(libs.viewpagerindicator)
 
     //stepView
     implementation(libs.stepview)
 
-    // Android ktx
+    //Android Ktx
     implementation(libs.androidx.navigation.fragment.ktx)
 
+    //Firebase
+    implementation(libs.firebase.auth)
+
+    //Coroutines with firebase
+    implementation(libs.kotlinx.coroutines.play.services)
 
 }

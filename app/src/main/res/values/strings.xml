@@ -3,5 +3,14 @@
     <string name="rightAddress">The Right Address\nFor Shopping\nAnyday</string>
     <string name="qulity">It is now very easy to reach the\nbest quality among the\nproducts on the internet!</string>
     <string name="start">Start</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="login_text">Let\'s Login</string>
+    <string name="email">Email</string>
+    <string name="don_t_have_account">Don\'t have an account? Register</string>
+    <string name="password">Password</string>
+    <string name="forgor_password">Forgor password</string>
+    <string name="facebook">Facebook</string>
+    <string name="google">Google</string>
 
 </resources>
