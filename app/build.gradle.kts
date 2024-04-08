@@ -38,6 +38,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -79,10 +83,7 @@ dependencies {
     //Android Ktx
     implementation(libs.androidx.navigation.fragment.ktx)
 
-    //Firebase
+    //Firebase auth
     implementation(libs.firebase.auth)
-
-    //Coroutines with firebase
-    implementation(libs.kotlinx.coroutines.play.services)
 
 }
