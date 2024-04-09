@@ -30,6 +30,9 @@ class LoginViewModel @Inject constructor(
     private val _validation = Channel<RegisterFieldsState>()
     val validation = _validation.receiveAsFlow()
 
+    private val _resetPassword = MutableSharedFlow<Resource<String>>()
+    val resetPassword = _resetPassword.asSharedFlow()
+
 
     fun login(email: String, password: String) {
         if (checkValidation(email, password)) {
@@ -57,6 +60,25 @@ class LoginViewModel @Inject constructor(
                 _validation.send(registerFieldState)
             }
         }
+    }
+
+    fun resetPassword(email: String) {
+        viewModelScope.launch {
+            _resetPassword.emit(Resource.Loading())
+        }
+
+        firebaseAuth
+            .sendPasswordResetEmail(email)
+            .addOnSuccessListener {
+                viewModelScope.launch {
+                    _resetPassword.emit(Resource.Success(email))
+                }
+            }
+            .addOnFailureListener {
+                viewModelScope.launch {
+                    _resetPassword.emit(Resource.Error(it.message.toString()))
+                }
+            }
     }
 
     private fun checkValidation(email: String, password: String): Boolean {

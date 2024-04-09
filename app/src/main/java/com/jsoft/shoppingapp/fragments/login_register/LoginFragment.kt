@@ -10,9 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.jsoft.shoppingapp.R
 import com.jsoft.shoppingapp.activities.ShoppingActivity
 import com.jsoft.shoppingapp.databinding.FragmentLoginBinding
+import com.jsoft.shoppingapp.dialog.setupBottomSheetDialog
 import com.jsoft.shoppingapp.utils.RegisterValidation
 import com.jsoft.shoppingapp.utils.Resource
 import com.jsoft.shoppingapp.viewmodel.LoginViewModel
@@ -39,6 +41,41 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
+
+            tvForgotPasswordLogin.setOnClickListener {
+                setupBottomSheetDialog { email ->
+                    viewModel.resetPassword(email)
+                }
+            }
+
+            lifecycleScope.launchWhenStarted {
+                viewModel.resetPassword.collect {
+                    when (it) {
+                        is Resource.Loading -> {
+                        }
+
+                        is Resource.Success -> {
+
+                            Snackbar.make(
+                                requireView(),
+                                "Reset link was sent to your email",
+                                Snackbar.LENGTH_LONG
+                            ).show()
+                        }
+
+                        is Resource.Error -> {
+                            Snackbar.make(
+                                requireView(),
+                                "Error: ${it.message}",
+                                Snackbar.LENGTH_LONG
+                            ).show()
+                        }
+
+
+                        else -> Unit
+                    }
+                }
+            }
 
             tvDontHaveAccount.setOnClickListener {
                 findNavController().navigate(R.id.action_loginFragment_to_registerFragment)

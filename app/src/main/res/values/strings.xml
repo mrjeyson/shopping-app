@@ -12,5 +12,9 @@
     <string name="forgor_password">Forgor password</string>
     <string name="facebook">Facebook</string>
     <string name="google">Google</string>
+    <string name="reset_password">Reset password</string>
+    <string name="reset_message">We will send you the password reset link to your email</string>
+    <string name="cancel">Cancel</string>
+    <string name="send">Send</string>
 
 </resources>
