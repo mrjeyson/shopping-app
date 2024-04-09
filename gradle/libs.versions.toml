@@ -25,6 +25,7 @@ stepview = "1.5.1"
 viewpagerindicator = "1.0.0-alpha.1"
 gmgVersion = "4.4.1"
 googleServices = "4.4.1"
+firebaseFirestore = "24.11.0"
 
 
 
@@ -51,6 +52,7 @@ navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.
 stepview = { module = "com.shuhart.stepview:stepview", version.ref = "stepview" }
 viewpagerindicator = { module = "io.github.vejei.viewpagerindicator:viewpagerindicator", version.ref = "viewpagerindicator" }
 google-services = { group = "com.google.gms", name = "google-services", version.ref = "googleServices" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

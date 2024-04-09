@@ -60,6 +60,7 @@
         app:layout_constraintTop_toBottomOf="@id/guidelineEllipseTop" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnStart"
         style="@style/blueButtonStyle"
         android:layout_width="@dimen/smallButtonWidth"
         android:layout_height="@dimen/smallButtonHeight"

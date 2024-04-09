@@ -86,4 +86,8 @@ dependencies {
     //Firebase auth
     implementation(libs.firebase.auth)
 
+    //Firebase store
+    implementation(libs.firebase.firestore)
+    
+
 }

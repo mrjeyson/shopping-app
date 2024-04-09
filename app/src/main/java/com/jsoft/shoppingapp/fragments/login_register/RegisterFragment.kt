@@ -8,17 +8,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.jsoft.shoppingapp.R
 import com.jsoft.shoppingapp.data.User
 import com.jsoft.shoppingapp.databinding.FragmentRegisterBinding
-import com.jsoft.shoppingapp.utils.RegisterFieldsState
 import com.jsoft.shoppingapp.utils.RegisterValidation
 import com.jsoft.shoppingapp.utils.Resource
 import com.jsoft.shoppingapp.viewmodel.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 private val TAG = "RegisterFragment"
@@ -41,6 +39,11 @@ class RegisterFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+
+            tvDoYouHaveAccount.setOnClickListener {
+                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+            }
+
             btnRegister.setOnClickListener {
                 val user = User(
                     edFirstNameRegister.text.toString().trim(),

@@ -79,7 +79,7 @@
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="@id/guideLoginRight"
             app:layout_constraintStart_toStartOf="@id/guideLoginLeft"
-            app:layout_constraintTop_toBottomOf="@id/tvDontHaveAccount"/>
+            app:layout_constraintTop_toBottomOf="@id/tvDontHaveAccount" />
 
 
         <EditText
@@ -89,7 +89,7 @@
             android:layout_height="@dimen/edittextHeight"
             android:layout_marginTop="15dp"
             android:hint="@string/password"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="@id/guideLoginRight"
             app:layout_constraintStart_toStartOf="@id/guideLoginLeft"
             app:layout_constraintTop_toBottomOf="@id/edEmailLogin" />
@@ -112,7 +112,7 @@
             android:layout_marginTop="13dp"
             android:src="@drawable/facebook_login"
             app:layout_constraintStart_toStartOf="@id/guideLoginLeft"
-            app:layout_constraintTop_toBottomOf="@id/btLogin" />
+            app:layout_constraintTop_toBottomOf="@id/btnLogin" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -130,7 +130,7 @@
             android:layout_marginTop="13dp"
             android:src="@drawable/google_login"
             app:layout_constraintEnd_toEndOf="@id/guideLoginRight"
-            app:layout_constraintTop_toBottomOf="@id/btLogin" />
+            app:layout_constraintTop_toBottomOf="@id/btnLogin" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -142,16 +142,17 @@
             app:layout_constraintTop_toTopOf="@id/googleLogin" />
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btLogin"
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/btnLogin"
             style="@style/blueButtonStyle"
             android:layout_width="0dp"
             android:layout_height="@dimen/mediumButtonHeight"
             android:layout_marginTop="15dp"
-            android:text="@string/register"
+            android:text="@string/login"
             app:layout_constraintEnd_toEndOf="@id/guideLoginRight"
             app:layout_constraintStart_toStartOf="@id/guideLoginLeft"
-            app:layout_constraintTop_toBottomOf="@+id/tvForgotPasswordLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/tvForgotPasswordLogin"
+            app:spinning_bar_color="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
