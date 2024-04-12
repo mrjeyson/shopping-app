@@ -21,5 +21,7 @@
     <string name="cart">Cart</string>
     <string name="profile">Profile</string>
     <string name="search_news">Search Now</string>
+    <string name="deals">Best deals</string>
+    <string name="products">Best products</string>
 
 </resources>
