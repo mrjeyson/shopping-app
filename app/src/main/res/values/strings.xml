@@ -23,5 +23,10 @@
     <string name="search_news">Search Now</string>
     <string name="deals">Best deals</string>
     <string name="products">Best products</string>
+    <string name="scotch_premium">Scotch Premium</string>
+    <string name="premium">Scotch Premium</string>
+    <string name="cost">$2000</string>
+    <string name="_1600">$1600</string>
+    <string name="product">See product</string>
 
 </resources>
