@@ -16,7 +16,7 @@ import com.jsoft.shoppingapp.R
 import com.jsoft.shoppingapp.adapters.BestDealsAdapter
 import com.jsoft.shoppingapp.adapters.BestProductsAdapter
 import com.jsoft.shoppingapp.adapters.SpecialProductsAdapter
-import com.jsoft.shoppingapp.databinding.FragmenMainCategoryBinding
+import com.jsoft.shoppingapp.databinding.FragmentMainCategoryBinding
 import com.jsoft.shoppingapp.utils.Resource
 import com.jsoft.shoppingapp.viewmodel.MainCategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,7 +27,7 @@ private val TAG = "MainCategoryFragment"
 @AndroidEntryPoint
 class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
 
-    private lateinit var binding: FragmenMainCategoryBinding
+    private lateinit var binding: FragmentMainCategoryBinding
     private lateinit var specialProductAdapter: SpecialProductsAdapter
     private lateinit var bestDealsAdapter: BestDealsAdapter
     private lateinit var bestProductsAdapter: BestProductsAdapter
@@ -40,7 +40,7 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmenMainCategoryBinding.inflate(inflater)
+        binding = FragmentMainCategoryBinding.inflate(inflater)
         return binding.root
     }
 
