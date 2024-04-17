@@ -67,6 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/g_gray700"
+                android:textSize="22sp"
                 tools:text="$6000" />
 
         </LinearLayout>
@@ -152,7 +153,7 @@
             android:layout_height="@dimen/mediumButtonHeight"
             android:layout_marginTop="45dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/login"
+            android:text="@string/add_to_cart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/linearProductPreferences"
             app:layout_constraintStart_toStartOf="@id/linearProductPreferences"

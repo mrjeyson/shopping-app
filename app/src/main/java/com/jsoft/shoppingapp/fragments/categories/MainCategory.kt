@@ -10,6 +10,7 @@ import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jsoft.shoppingapp.R
@@ -18,6 +19,7 @@ import com.jsoft.shoppingapp.adapters.BestProductsAdapter
 import com.jsoft.shoppingapp.adapters.SpecialProductsAdapter
 import com.jsoft.shoppingapp.databinding.FragmentMainCategoryBinding
 import com.jsoft.shoppingapp.utils.Resource
+import com.jsoft.shoppingapp.utils.showBottomNavigationView
 import com.jsoft.shoppingapp.viewmodel.MainCategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -50,6 +52,22 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
         setupSpecialProductRv()
         setupBestDealsRv()
         setupBestProductsRv()
+
+        specialProductAdapter.onClick = {
+            val b = Bundle().apply { putParcelable("product", it) }
+            findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment, b)
+        }
+
+        bestDealsAdapter.onClick = {
+            val b = Bundle().apply { putParcelable("product", it) }
+            findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment, b)
+        }
+
+        bestProductsAdapter.onClick = {
+            val b = Bundle().apply { putParcelable("product", it) }
+            findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment, b)
+        }
+
         lifecycleScope.launchWhenStarted {
             viewModel.specialProducts.collectLatest {
                 when (it) {
@@ -164,5 +182,11 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = specialProductAdapter
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        showBottomNavigationView()
     }
 }
