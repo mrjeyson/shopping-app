@@ -7,9 +7,11 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.jsoft.shoppingapp.data.CartProduct
 import com.jsoft.shoppingapp.firebase.FirebaseCommon
+import com.jsoft.shoppingapp.helper.getProductPrice
 import com.jsoft.shoppingapp.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,6 +25,22 @@ class CartViewModel @Inject constructor(
     private val _cartProducts =
         MutableStateFlow<Resource<List<CartProduct>>>(Resource.Unspecified())
     val cartProducts = _cartProducts
+
+    val productsPrice = cartProducts.map {
+        when (it) {
+            is Resource.Success -> {
+                calculatePrice(it.data!!)
+            }
+
+            else -> null
+        }
+    }
+
+    private fun calculatePrice(data: List<CartProduct>): Float {
+        return data.sumByDouble { cartProduct ->
+            (cartProduct.product.offerPercentage.getProductPrice(cartProduct.product.price) * cartProduct.quantity).toDouble()
+        }.toFloat()
+    }
 
     private var cartProductDocuments = emptyList<DocumentSnapshot>()
 
@@ -58,10 +76,12 @@ class CartViewModel @Inject constructor(
             val documentId = cartProductDocuments[index].id
             when (quantityChanging) {
                 FirebaseCommon.QuantityChanging.INCREASE -> {
+                    viewModelScope.launch { _cartProducts.emit(Resource.Loading()) }
                     increaseQuantity(documentId)
                 }
 
                 FirebaseCommon.QuantityChanging.DECREASE -> {
+                    viewModelScope.launch { _cartProducts.emit(Resource.Loading()) }
                     decreaseQuantity(documentId)
                 }
             }

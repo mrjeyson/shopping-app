@@ -48,7 +48,6 @@ class ShoppingActivity : AppCompatActivity() {
                             backgroundColor = resources.getColor(R.color.g_blue)
                         }
                     }
-
                     else -> Unit
                 }
             }

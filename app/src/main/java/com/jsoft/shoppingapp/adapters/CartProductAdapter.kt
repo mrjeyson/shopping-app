@@ -9,9 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.jsoft.shoppingapp.data.CartProduct
-import com.jsoft.shoppingapp.data.Product
 import com.jsoft.shoppingapp.databinding.CartProductItemBinding
-import com.jsoft.shoppingapp.databinding.SpecialRvItemBinding
 import com.jsoft.shoppingapp.helper.getProductPrice
 
 class CartProductAdapter :
