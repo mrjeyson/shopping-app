@@ -12,8 +12,7 @@ import com.jsoft.shoppingapp.data.CartProduct
 import com.jsoft.shoppingapp.databinding.CartProductItemBinding
 import com.jsoft.shoppingapp.helper.getProductPrice
 
-class CartProductAdapter :
-    RecyclerView.Adapter<CartProductAdapter.CartProductsViewHolder>() {
+class CartProductAdapter : RecyclerView.Adapter<CartProductAdapter.CartProductsViewHolder>() {
 
     inner class CartProductsViewHolder(val binding: CartProductItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -21,8 +20,7 @@ class CartProductAdapter :
         fun bind(cartProduct: CartProduct) {
             binding.apply {
                 if (cartProduct.product.images.isNotEmpty()) {
-                    Glide.with(itemView).load(cartProduct.product.images[0])
-                        .into(imageCartProduct)
+                    Glide.with(itemView).load(cartProduct.product.images[0]).into(imageCartProduct)
                 }
                 tvProductCartName.text = cartProduct.product.name
                 tvCartProductQuantity.text = cartProduct.quantity.toString()
@@ -39,20 +37,17 @@ class CartProductAdapter :
                 tvCartProductSize.text = cartProduct.selectedSize ?: "".also {
                     imageCartProductSize.setImageDrawable(ColorDrawable(Color.TRANSPARENT))
                 }
-
             }
         }
-
     }
 
-
-    val diffCallback = object : DiffUtil.ItemCallback<CartProduct>() {
+    private val diffCallback = object : DiffUtil.ItemCallback<CartProduct>() {
         override fun areItemsTheSame(oldItem: CartProduct, newItem: CartProduct): Boolean {
             return oldItem.product.id == newItem.product.id
         }
 
         override fun areContentsTheSame(oldItem: CartProduct, newItem: CartProduct): Boolean {
-            return oldItem.product.id == newItem.product.id
+            return oldItem == newItem
         }
     }
 
@@ -77,11 +72,11 @@ class CartProductAdapter :
         holder.binding.imgPlus.setOnClickListener {
             onPlusClick?.invoke(cartProduct)
         }
+
         holder.binding.imgMinus.setOnClickListener {
             onMinusClick?.invoke(cartProduct)
         }
     }
-
 
     override fun getItemCount(): Int {
         return differ.currentList.size
@@ -90,5 +85,6 @@ class CartProductAdapter :
     var onProductClick: ((CartProduct) -> Unit)? = null
     var onPlusClick: ((CartProduct) -> Unit)? = null
     var onMinusClick: ((CartProduct) -> Unit)? = null
-}
 
+
+}

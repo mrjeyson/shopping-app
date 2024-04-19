@@ -10,7 +10,10 @@ import com.jsoft.shoppingapp.firebase.FirebaseCommon
 import com.jsoft.shoppingapp.helper.getProductPrice
 import com.jsoft.shoppingapp.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,17 +27,32 @@ class CartViewModel @Inject constructor(
 
     private val _cartProducts =
         MutableStateFlow<Resource<List<CartProduct>>>(Resource.Unspecified())
-    val cartProducts = _cartProducts
+    val cartProducts = _cartProducts.asStateFlow()
+
 
     val productsPrice = cartProducts.map {
         when (it) {
             is Resource.Success -> {
                 calculatePrice(it.data!!)
             }
-
             else -> null
         }
     }
+    private val _deleteDialog = MutableSharedFlow<CartProduct>()
+    val deleteDialog = _deleteDialog.asSharedFlow()
+
+    private var cartProductDocuments = emptyList<DocumentSnapshot>()
+
+
+    fun deleteCartProduct(cartProduct: CartProduct) {
+        val index = cartProducts.value.data?.indexOf(cartProduct)
+        if (index != null && index != -1) {
+            val documentId = cartProductDocuments[index].id
+            firestore.collection("user").document(auth.uid!!).collection("cart")
+                .document(documentId).delete()
+        }
+    }
+
 
     private fun calculatePrice(data: List<CartProduct>): Float {
         return data.sumByDouble { cartProduct ->
@@ -42,11 +60,11 @@ class CartViewModel @Inject constructor(
         }.toFloat()
     }
 
-    private var cartProductDocuments = emptyList<DocumentSnapshot>()
 
     init {
         getCartProducts()
     }
+
 
     private fun getCartProducts() {
         viewModelScope.launch { _cartProducts.emit(Resource.Loading()) }
@@ -62,16 +80,18 @@ class CartViewModel @Inject constructor(
             }
     }
 
+
     fun changeQuantity(
         cartProduct: CartProduct,
         quantityChanging: FirebaseCommon.QuantityChanging
     ) {
 
         val index = cartProducts.value.data?.indexOf(cartProduct)
+
         /**
-         * index could be equal to -1 if the function [getChartProducts] delays which will also delay the result we expect to be inside the [_cartProducts]
+         * index could be equal to -1 if the function [getCartProducts] delays which will also delay the result we expect to be inside the [_cartProducts]
          * and to prevent the app from crashing we make a check
-         * **/
+         */
         if (index != null && index != -1) {
             val documentId = cartProductDocuments[index].id
             when (quantityChanging) {
@@ -79,15 +99,16 @@ class CartViewModel @Inject constructor(
                     viewModelScope.launch { _cartProducts.emit(Resource.Loading()) }
                     increaseQuantity(documentId)
                 }
-
                 FirebaseCommon.QuantityChanging.DECREASE -> {
+                    if (cartProduct.quantity == 1) {
+                        viewModelScope.launch { _deleteDialog.emit(cartProduct) }
+                        return
+                    }
                     viewModelScope.launch { _cartProducts.emit(Resource.Loading()) }
                     decreaseQuantity(documentId)
                 }
             }
         }
-
-
     }
 
     private fun decreaseQuantity(documentId: String) {
@@ -103,4 +124,6 @@ class CartViewModel @Inject constructor(
                 viewModelScope.launch { _cartProducts.emit(Resource.Error(exception.message.toString())) }
         }
     }
+
+
 }
