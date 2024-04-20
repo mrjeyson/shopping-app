@@ -32,5 +32,8 @@
     <string name="add_to_cart">Add to cart</string>
     <string name="total">Total</string>
     <string name="check_out">Check out</string>
+    <string name="payment_methods">Payment Methods</string>
+    <string name="short_definition">Keline dose not support virtual payments. You can pay when you receive your order.</string>
+    <string name="shipping_address">Shipping Address</string>
 
 </resources>
