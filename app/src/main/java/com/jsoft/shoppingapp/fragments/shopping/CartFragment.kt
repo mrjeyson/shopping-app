@@ -120,6 +120,7 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
                 totalPrice,
                 cartAdapter.differ.currentList.toTypedArray()
             )
+            findNavController().navigate(action)
         }
     }
 
