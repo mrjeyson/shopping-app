@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.firebase.storage)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -88,6 +89,8 @@ dependencies {
 
     //Firebase store
     implementation(libs.firebase.firestore)
+
+    implementation(libs.kotlinx.coroutines.play.services)
     
 
 }

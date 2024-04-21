@@ -90,6 +90,10 @@ class BillingFragment : Fragment() {
             }
         }
 
+        binding.imageCloseBilling.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
         lifecycleScope.launchWhenStarted {
             orderViewModel.order.collectLatest {
                 when (it) {
