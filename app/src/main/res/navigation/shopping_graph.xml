@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="com.jsoft.shoppingapp.fragments.shopping.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
@@ -18,7 +18,7 @@
         android:id="@+id/searchFragment"
         android:name="com.jsoft.shoppingapp.fragments.shopping.SearchFragment"
         android:label="SearchFragment"
-        tools:layout="@layout/fragment_search" >
+        tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_searchFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
@@ -27,16 +27,19 @@
         android:id="@+id/cartFragment"
         android:name="com.jsoft.shoppingapp.fragments.shopping.CartFragment"
         android:label="CartFragment"
-        tools:layout="@layout/fragment_cart" >
+        tools:layout="@layout/fragment_cart">
         <action
             android:id="@+id/action_cartFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_billingFragment"
+            app:destination="@id/billingFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.jsoft.shoppingapp.fragments.shopping.ProfileFragment"
         android:label="ProfileFragment"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_addressFragment"
             app:destination="@id/addressFragment" />
@@ -45,14 +48,31 @@
         android:id="@+id/productDetailsFragment"
         android:name="com.jsoft.shoppingapp.fragments.shopping.ProductDetailsFragment"
         android:label="ProductDetailsFragment"
-        tools:layout="@layout/fragment_product_details" >
+        tools:layout="@layout/fragment_product_details">
         <argument
             android:name="product"
             app:argType="com.jsoft.shoppingapp.data.Product" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_address"
         android:id="@+id/addressFragment"
         android:name="com.jsoft.shoppingapp.fragments.shopping.AddressFragment"
-        android:label="AddressFragment" />
+        android:label="AddressFragment"
+        tools:layout="@layout/fragment_address" />
+    <fragment
+        android:id="@+id/billingFragment"
+        android:name="com.jsoft.shoppingapp.fragments.shopping.BillingFragment"
+        android:label="BillingFragment"
+        tools:layout="@layout/fragment_billing" >
+        <action
+            android:id="@+id/action_billingFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+        <argument
+            android:name="totalPrice"
+            app:argType="float" />
+        <argument
+            android:name="products"
+            app:argType="com.jsoft.shoppingapp.data.CartProduct[]" />
+    </fragment>
+
+
 </navigation>

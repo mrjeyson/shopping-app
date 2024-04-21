@@ -1,21 +1,41 @@
 package com.jsoft.shoppingapp.adapters
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
 import com.jsoft.shoppingapp.data.CartProduct
+import com.jsoft.shoppingapp.databinding.BillingProductsRvItemBinding
 import com.jsoft.shoppingapp.databinding.FragmentBillingBinding
+import com.jsoft.shoppingapp.helper.getProductPrice
 
 class BillingProductsAdapter : Adapter<BillingProductsAdapter.BillingProductsViewHolder>() {
 
-    inner class BillingProductsViewHolder(val binding: FragmentBillingBinding) :
+    inner class BillingProductsViewHolder(val binding: BillingProductsRvItemBinding) :
         ViewHolder(binding.root) {
         fun bind(billingProduct: CartProduct) {
             binding.apply {
+                if (billingProduct.product.images.isNotEmpty()) {
+                    Glide.with(itemView).load(billingProduct.product.images[0])
+                        .into(imageCartProduct)
+                }
+                tvProductCartName.text = billingProduct.product.name
+                tvBillingProductQuantity.text = billingProduct.quantity.toString()
 
+                val priceAfterPercentage =
+                    billingProduct.product.offerPercentage.getProductPrice(billingProduct.product.price)
+                tvProductCartPrice.text = "$ ${String.format("%.2f", priceAfterPercentage)}"
+
+                imageCartProductColor.setImageDrawable(
+                    ColorDrawable(
+                        billingProduct.selectedColor ?: Color.TRANSPARENT
+                    )
+                )
             }
         }
     }
@@ -35,7 +55,7 @@ class BillingProductsAdapter : Adapter<BillingProductsAdapter.BillingProductsVie
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BillingProductsViewHolder {
         return BillingProductsViewHolder(
-            FragmentBillingBinding.inflate(LayoutInflater.from(parent.context))
+            BillingProductsRvItemBinding.inflate(LayoutInflater.from(parent.context))
         )
     }
 

@@ -61,6 +61,13 @@ class AddressAdapter : Adapter<AddressAdapter.AddressViewHolder>() {
         }
     }
 
+    init {
+        differ.addListListener { _, _ ->
+            notifyItemChanged(selectedAddress)
+
+        }
+    }
+
 
     override fun getItemCount(): Int {
         return differ.currentList.size

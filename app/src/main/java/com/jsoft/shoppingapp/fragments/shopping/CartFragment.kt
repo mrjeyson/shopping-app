@@ -52,24 +52,6 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
             }
         }
 
-        cartAdapter.onProductClick = {
-            val b = Bundle().apply {
-                putParcelable("product", it.product)
-            }
-            findNavController().navigate(R.id.action_cartFragment_to_productDetailsFragment, b)
-        }
-
-        cartAdapter.onPlusClick = {
-            viewModel.changeQuantity(it, FirebaseCommon.QuantityChanging.INCREASE)
-        }
-
-        cartAdapter.onMinusClick = {
-            viewModel.changeQuantity(it, FirebaseCommon.QuantityChanging.DECREASE)
-        }
-
-
-
-
 
         lifecycleScope.launchWhenStarted {
             viewModel.deleteDialog.collectLatest {
@@ -95,6 +77,7 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
                     is Resource.Loading -> {
                         binding.progressbarCart.visibility = View.VISIBLE
                     }
+
                     is Resource.Success -> {
                         binding.progressbarCart.visibility = View.INVISIBLE
                         if (it.data!!.isEmpty()) {
@@ -106,13 +89,37 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
                             cartAdapter.differ.submitList(it.data)
                         }
                     }
+
                     is Resource.Error -> {
                         binding.progressbarCart.visibility = View.INVISIBLE
                         Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                     }
+
                     else -> Unit
                 }
             }
+        }
+
+        cartAdapter.onProductClick = {
+            val b = Bundle().apply {
+                putParcelable("product", it.product)
+            }
+            findNavController().navigate(R.id.action_cartFragment_to_productDetailsFragment, b)
+        }
+
+        cartAdapter.onPlusClick = {
+            viewModel.changeQuantity(it, FirebaseCommon.QuantityChanging.INCREASE)
+        }
+
+        cartAdapter.onMinusClick = {
+            viewModel.changeQuantity(it, FirebaseCommon.QuantityChanging.DECREASE)
+        }
+
+        binding.buttonCheckout.setOnClickListener {
+            val action = CartFragmentDirections.actionCartFragmentToBillingFragment(
+                totalPrice,
+                cartAdapter.differ.currentList.toTypedArray()
+            )
         }
     }
 
