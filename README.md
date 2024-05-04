@@ -1,6 +1,6 @@
 # shopping-app
  This e-commerce App
-# Technologies
+Technologies:
 #
 # MVVM - Architecture pattern
 # Glide - to download image from network
