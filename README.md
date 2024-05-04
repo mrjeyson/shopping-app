@@ -1,5 +1,5 @@
 # shopping-app
-# This e-commerce App
+ This e-commerce App
 # Technologies
 #
 # MVVM - Architecture pattern
