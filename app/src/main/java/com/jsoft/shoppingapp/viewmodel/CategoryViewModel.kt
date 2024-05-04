@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
-class CategoryViewModel  constructor(
+class CategoryViewModel(
     private val firestore: FirebaseFirestore,
     private val category: Category
 ) : ViewModel() {

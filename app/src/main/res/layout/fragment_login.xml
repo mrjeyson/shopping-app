@@ -32,7 +32,7 @@
             app:layout_constraintGuide_percent="0.91" />
 
 
-        <TextView
+<!--        <TextView
             android:id="@+id/tvAppName"
             style="@style/h3"
             android:layout_width="wrap_content"
@@ -43,19 +43,19 @@
             android:textStyle="bold"
             app:drawableStartCompat="@drawable/ic_kleine_shape"
             app:layout_constraintStart_toStartOf="@id/guideLoginLeft"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />-->
 
         <TextView
             android:id="@+id/tvTextLogin"
             style="@style/h4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="125dp"
             android:gravity="center"
             android:text="@string/login_text"
             android:textSize="35sp"
             app:layout_constraintStart_toStartOf="@+id/guideLoginLeft"
-            app:layout_constraintTop_toBottomOf="@id/tvAppName" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView

@@ -16,10 +16,10 @@
             android:id="@+id/img_product"
             android:layout_width="114dp"
             android:layout_height="108dp"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:scaleType="fitCenter"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:id="@+id/linear_product_name"
@@ -27,20 +27,21 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@id/img_product"
             app:layout_constraintStart_toStartOf="@id/img_product"
-            app:layout_constraintTop_toBottomOf="@id/img_product"
-            app:layout_constraintEnd_toEndOf="@id/img_product">
+            app:layout_constraintTop_toBottomOf="@id/img_product">
 
             <TextView
                 android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:fontFamily="@font/poppins_light"
-                android:text="Chair"
+                android:maxLines="2"
+                android:text="@string/chair"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                android:textStyle="bold"
-                android:layout_weight="1"/>
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/img_favorite"
@@ -48,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="16dp"
+                android:contentDescription="@null"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_favorite"
                 app:tint="@color/g_blue_gray200" />
@@ -58,16 +60,16 @@
             android:id="@+id/tv_new_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/sf_pro_display"
-            android:text="$1600"
+            android:text="@string/temp_cost"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_price"
-            app:layout_constraintTop_toBottomOf="@id/linear_product_name"
-            android:layout_marginStart="10dp"/>
+            app:layout_constraintTop_toBottomOf="@id/linear_product_name" />
 
         <TextView
             android:id="@+id/tv_price"
@@ -76,7 +78,7 @@
             android:layout_marginTop="3dp"
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/sf_pro_display"
-            android:text="$1600"
+            android:text="@string/temp_cost"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"

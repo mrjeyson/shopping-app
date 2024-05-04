@@ -15,7 +15,7 @@
         android:layout_height="match_parent">
 
 
-        <TextView
+<!--        <TextView
             android:id="@+id/tvAppName"
             style="@style/h3"
             android:layout_width="wrap_content"
@@ -27,20 +27,20 @@
             app:drawableStartCompat="@drawable/ic_kleine_shape"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />-->
 
         <TextView
             android:id="@+id/tvRightAddressForShopping"
             style="@style/h4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="165dp"
             android:gravity="center"
             android:text="@string/rightAddress"
             android:textSize="35sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvAppName" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
