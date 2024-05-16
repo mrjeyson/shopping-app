@@ -36,7 +36,6 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
 
     val viewModel by viewModels<MainCategoryViewModel>()
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
