@@ -10,6 +10,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:contentDescription="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/blury_background" />
 
@@ -32,18 +33,18 @@
             app:layout_constraintGuide_percent="0.91" />
 
 
-<!--        <TextView
-            android:id="@+id/tvAppName"
-            style="@style/h3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="115dp"
-            android:drawablePadding="6dp"
-            android:text="Kleine"
-            android:textStyle="bold"
-            app:drawableStartCompat="@drawable/ic_kleine_shape"
-            app:layout_constraintStart_toStartOf="@id/guideLoginLeft"
-            app:layout_constraintTop_toTopOf="parent" />-->
+        <!--        <TextView
+                    android:id="@+id/tvAppName"
+                    style="@style/h3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="115dp"
+                    android:drawablePadding="6dp"
+                    android:text="Kleine"
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/ic_kleine_shape"
+                    app:layout_constraintStart_toStartOf="@id/guideLoginLeft"
+                    app:layout_constraintTop_toTopOf="parent" />-->
 
         <TextView
             android:id="@+id/tvTextLogin"
