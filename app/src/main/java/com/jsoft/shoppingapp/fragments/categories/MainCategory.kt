@@ -73,21 +73,18 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
                     is Resource.Loading -> {
                         showLoading()
                     }
-
                     is Resource.Success -> {
                         specialProductAdapter.differ.submitList(it.data)
                         hideLoading()
                         Log.d(TAG, it.data.toString())
 
                     }
-
                     is Resource.Error -> {
                         hideLoading()
                         Log.d(TAG, it.message.toString())
                         Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
 
                     }
-
                     else -> Unit
                 }
             }
@@ -99,21 +96,18 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
                     is Resource.Loading -> {
                         showLoading()
                     }
-
                     is Resource.Success -> {
                         bestDealsAdapter.differ.submitList(it.data)
                         hideLoading()
                         Log.d(TAG, it.data.toString())
 
                     }
-
                     is Resource.Error -> {
                         hideLoading()
                         Log.d(TAG, it.message.toString())
                         Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
 
                     }
-
                     else -> Unit
                 }
             }
