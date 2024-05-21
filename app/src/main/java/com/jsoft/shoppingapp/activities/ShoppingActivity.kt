@@ -34,6 +34,7 @@ class ShoppingActivity : AppCompatActivity() {
             insets
         }
 
+
         val navController = findNavController(R.id.shoppingHostFragment)
         binding.bottomNavigation.setupWithNavController(navController)
         lifecycleScope.launchWhenStarted {
