@@ -80,13 +80,16 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
 
     }
 
+
     open fun onOfferPagingRequest() {
 
     }
 
+
     open fun onBestProductPagingRequest() {
 
     }
+
 
     private fun setupBestProductsRv() {
         binding.rvBestProducts.apply {
@@ -96,6 +99,7 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
         }
     }
 
+
     private fun setupOfferRv() {
         binding.rvOffer.apply {
             layoutManager =
@@ -104,10 +108,10 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
         }
     }
 
+
     override fun onResume() {
         super.onResume()
         showBottomNavigationView()
     }
-
 
 }
