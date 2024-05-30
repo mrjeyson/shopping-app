@@ -99,7 +99,6 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
         }
     }
 
-
     private fun setupOfferRv() {
         binding.rvOffer.apply {
             layoutManager =
