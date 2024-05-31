@@ -107,6 +107,7 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
         }
     }
 
+
     override fun onResume() {
         super.onResume()
         showBottomNavigationView()
