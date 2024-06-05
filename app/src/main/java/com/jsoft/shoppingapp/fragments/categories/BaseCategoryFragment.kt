@@ -110,6 +110,4 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
         super.onResume()
         showBottomNavigationView()
     }
-
-
 }
