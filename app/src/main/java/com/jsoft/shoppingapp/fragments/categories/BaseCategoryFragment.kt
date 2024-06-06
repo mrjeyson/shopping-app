@@ -98,7 +98,6 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
             adapter = bestProductsAdapter
         }
     }
-
     private fun setupOfferRv() {
         binding.rvOffer.apply {
             layoutManager =
