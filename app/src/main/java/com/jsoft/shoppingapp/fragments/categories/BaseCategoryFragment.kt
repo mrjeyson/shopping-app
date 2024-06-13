@@ -80,7 +80,6 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
 
     }
 
-
     open fun onOfferPagingRequest() {
 
     }
