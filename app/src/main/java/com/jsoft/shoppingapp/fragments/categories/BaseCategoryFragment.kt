@@ -15,6 +15,7 @@ import com.jsoft.shoppingapp.adapters.BestProductsAdapter
 import com.jsoft.shoppingapp.databinding.FragmentBaseCategoryBinding
 import com.jsoft.shoppingapp.utils.showBottomNavigationView
 
+
 open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
 
     private lateinit var binding: FragmentBaseCategoryBinding
