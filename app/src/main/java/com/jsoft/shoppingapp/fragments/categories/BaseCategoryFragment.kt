@@ -29,6 +29,7 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
