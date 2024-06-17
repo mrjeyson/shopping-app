@@ -76,11 +76,11 @@ class UserAccountViewModel @Inject constructor(
         if (imgUri == null) {
             saveUserInformation(user, true)
         } else {
-            saveuserInformationWithNewImage(user, imgUri)
+            saveUserInformationWithNewImage(user, imgUri)
         }
     }
 
-    private fun saveuserInformationWithNewImage(user: User, imgUri: Uri) {
+    private fun saveUserInformationWithNewImage(user: User, imgUri: Uri) {
         viewModelScope.launch {
 
 
