@@ -22,6 +22,7 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
     protected val offerAdapter: BestProductsAdapter by lazy { BestProductsAdapter() }
     protected val bestProductsAdapter: BestProductsAdapter by lazy { BestProductsAdapter() }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
