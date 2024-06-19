@@ -17,4 +17,3 @@ data class Product(
 ) : Parcelable {
     constructor() : this("0", "", "", 0f, images = emptyList())
 }
-
