@@ -16,6 +16,7 @@ class FirebaseCommon @Inject constructor(
         firestore.collection("user").document(auth.uid!!).collection("cart")
 
 
+
     fun addProductToCart(cartProduct: CartProduct, onResult: (CartProduct?, Exception?) -> Unit) {
         cartCollection.document().set(cartProduct)
             .addOnSuccessListener {
