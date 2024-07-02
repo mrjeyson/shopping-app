@@ -65,7 +65,6 @@ class CartViewModel @Inject constructor(
         getCartProducts()
     }
 
-
     private fun getCartProducts() {
         viewModelScope.launch { _cartProducts.emit(Resource.Loading()) }
         firestore.collection("user").document(auth.uid!!).collection("cart")
