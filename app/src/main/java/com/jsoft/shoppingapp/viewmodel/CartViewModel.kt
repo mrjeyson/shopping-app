@@ -35,6 +35,7 @@ class CartViewModel @Inject constructor(
             is Resource.Success -> {
                 calculatePrice(it.data!!)
             }
+
             else -> null
         }
     }
@@ -99,6 +100,7 @@ class CartViewModel @Inject constructor(
                     viewModelScope.launch { _cartProducts.emit(Resource.Loading()) }
                     increaseQuantity(documentId)
                 }
+
                 FirebaseCommon.QuantityChanging.DECREASE -> {
                     if (cartProduct.quantity == 1) {
                         viewModelScope.launch { _deleteDialog.emit(cartProduct) }
