@@ -81,6 +81,7 @@ class CartViewModel @Inject constructor(
             }
     }
 
+
     fun changeQuantity(
         cartProduct: CartProduct,
         quantityChanging: FirebaseCommon.QuantityChanging
