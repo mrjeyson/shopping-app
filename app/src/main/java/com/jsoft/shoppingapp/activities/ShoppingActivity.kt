@@ -17,6 +17,7 @@ import com.jsoft.shoppingapp.viewmodel.CartViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
+
 @AndroidEntryPoint
 class ShoppingActivity : AppCompatActivity() {
 
