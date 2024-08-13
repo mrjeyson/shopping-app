@@ -24,6 +24,7 @@ class ShoppingActivity : AppCompatActivity() {
     val binding by lazy { ActivityShoppingBinding.inflate(layoutInflater) }
     val viewModel by viewModels<CartViewModel>()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
