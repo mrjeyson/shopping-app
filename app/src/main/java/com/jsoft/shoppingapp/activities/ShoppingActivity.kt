@@ -20,8 +20,6 @@ import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class ShoppingActivity : AppCompatActivity() {
-
-
     val binding by lazy { ActivityShoppingBinding.inflate(layoutInflater) }
     val viewModel by viewModels<CartViewModel>()
 
