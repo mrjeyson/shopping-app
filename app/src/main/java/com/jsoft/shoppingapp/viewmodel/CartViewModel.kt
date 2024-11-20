@@ -29,7 +29,6 @@ class CartViewModel @Inject constructor(
         MutableStateFlow<Resource<List<CartProduct>>>(Resource.Unspecified())
     val cartProducts = _cartProducts.asStateFlow()
 
-
     val productsPrice = cartProducts.map {
         when (it) {
             is Resource.Success -> {
